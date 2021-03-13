@@ -1,6 +1,7 @@
 // Query selectors for the HTML Elements
 let recipesContainer = document.querySelector(".recipes-container");
-let submitButton = document.querySelector(".primary");
+let submitButton = document.querySelector("#submit-button");
+let selectedDiet = document.querySelector("#diet");
 let selectedIngredients = document.querySelector("input");
 
 // Declare variable for recipe information
@@ -9,11 +10,11 @@ let recipeList = {};
 // Make APIs Calls functionality
 // Async function that calls the Edamam API with ingredients, these can be separated by commas
 // Consider adding healthLabels as a parameter to the function.
-async function callRecipes(ingredients){
+async function callRecipes(ingredients, diet){
     // EdamamID and Key 
     const edamamID = "160f3329";
     const edamamKey = "ac5580afc95ecea7517a637138b4d2e1";
-    let recipeAPI = `https://api.edamam.com/search?q=${ingredients}&app_id=${edamamID}&app_key=${edamamKey}`
+    let recipeAPI = `https://api.edamam.com/search?q=${ingredients}&health=${diet}&to=30&app_id=${edamamID}&app_key=${edamamKey}`
     let fetchedRecipes = await fetch(recipeAPI);
     recipeList = await fetchedRecipes.json();
     console.dir(recipeList);
@@ -70,7 +71,7 @@ function buildRecipeCard(){
 
 // Async function to build the recipes section
 async function buildRecipeSection(){
-    await callRecipes(selectedIngredients.value);
+    await callRecipes(selectedIngredients.value, selectedDiet.value);
     for (let i = 0; i < 6; i++){
         buildRecipeCard();
     }
