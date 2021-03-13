@@ -1,6 +1,7 @@
 // Query selectors for the HTML Elements
 let recipesContainer = document.querySelector(".grid-x");
 let submitButton = document.querySelector(".primary");
+let selectedIngredients = document.querySelector("input");
 
 // Declare variable for recipe information
 let recipeList = {};
@@ -38,22 +39,24 @@ async function callDonateNYCDirectory(ntaName){
 
 // Function to build out the recipe cards when the submit form button is pressed
 function buildRecipeCard(){
+    let randomRecipe = Math.floor(Math.random()*recipeList.hits.length);
+
     let cardContainer = document.createElement("div");
     cardContainer.className = "card cell small-4";
     cardContainer.setAttribute("style", "width: 300px");
 
     let cardHeader = document.createElement("div");
     cardHeader.className = "card-divider" ;
-    cardHeader.innerText = recipeList.hits[0].recipe.label;
+    cardHeader.innerText = recipeList.hits[randomRecipe].recipe.label;
 
     let cardImage = document.createElement("img");
-    cardImage.src = recipeList.hits[0].recipe.image;
+    cardImage.src = recipeList.hits[randomRecipe].recipe.image;
 
     let cardSection = document.createElement("div");
     cardSection.className = "card-section";
     cardSection.innerHTML = `
-        <p>${recipeList.hits[0].recipe.dishType}</p>
-        <a href='${recipeList.hits[0].recipe.url}'>Link to Recipe</a>
+        <p>${recipeList.hits[randomRecipe].recipe.dishType}</p>
+        <a href='${recipeList.hits[randomRecipe].recipe.url}'>Link to Recipe</a>
         <button type="button" class="button primary">Save Recipe</button>`;
 
     cardContainer.appendChild(cardHeader);
@@ -65,18 +68,11 @@ function buildRecipeCard(){
 
 // Async function to build the recipes section
 async function buildRecipeSection(){
-    await callRecipes("chicken");
-    buildRecipeCard();
+    await callRecipes(selectedIngredients.value);
+    for (let i = 0; i < 6; i++){
+        buildRecipeCard();
+    }
 }
-
-
-    // Needs to grab the data from callRecipes
-    // Then construct HTML elements using the data from Edamam API, useful ones that they provide are:
-        // .image (image of the dish)
-        // .label (the name of the dish)
-        // .dishType (main course, etc.)
-        // .url (original recipe link)
-        // We should also have a SAVE RECIPE button here
 
 // Localstorage functionality to store recipes
     // Save the currently selected recipe to localStorage in some format (HTML Element, or the current content of it)
