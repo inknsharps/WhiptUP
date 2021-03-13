@@ -1,3 +1,10 @@
+// Query selectors for the HTML Elements
+let recipesContainer = document.querySelector(".grid-x");
+let submitButton = document.querySelector(".primary");
+
+// Declare variable for recipe information
+let recipeList = {};
+
 // Make APIs Calls functionality
 // Async function that calls the Edamam API with ingredients, these can be separated by commas
 // Consider adding healthLabels as a parameter to the function.
@@ -7,7 +14,7 @@ async function callRecipes(ingredients){
     const edamamKey = "ac5580afc95ecea7517a637138b4d2e1";
     let recipeAPI = `https://api.edamam.com/search?q=${ingredients}&app_id=${edamamID}&app_key=${edamamKey}`
     let fetchedRecipes = await fetch(recipeAPI);
-    let recipeList = await fetchedRecipes.json();
+    recipeList = await fetchedRecipes.json();
     console.dir(recipeList);
 }
 
@@ -30,6 +37,39 @@ async function callDonateNYCDirectory(ntaName){
 };
 
 // Function to build out the recipe cards when the submit form button is pressed
+function buildRecipeCard(){
+    let cardContainer = document.createElement("div");
+    cardContainer.className = "card cell small-4";
+    cardContainer.setAttribute("style", "width: 300px");
+
+    let cardHeader = document.createElement("div");
+    cardHeader.className = "card-divider" ;
+    cardHeader.innerText = recipeList.hits[0].recipe.label;
+
+    let cardImage = document.createElement("img");
+    cardImage.src = recipeList.hits[0].recipe.image;
+
+    let cardSection = document.createElement("div");
+    cardSection.className = "card-section";
+    cardSection.innerHTML = `
+        <p>${recipeList.hits[0].recipe.dishType}</p>
+        <a href='${recipeList.hits[0].recipe.url}'>Link to Recipe</a>
+        <button type="button" class="button primary">Save Recipe</button>`;
+
+    cardContainer.appendChild(cardHeader);
+    cardContainer.appendChild(cardImage);
+    cardContainer.appendChild(cardSection);
+
+    recipesContainer.appendChild(cardContainer);
+}
+
+// Async function to build the recipes section
+async function buildRecipeSection(){
+    await callRecipes("chicken");
+    buildRecipeCard();
+}
+
+
     // Needs to grab the data from callRecipes
     // Then construct HTML elements using the data from Edamam API, useful ones that they provide are:
         // .image (image of the dish)
@@ -66,3 +106,4 @@ async function callDonateNYCDirectory(ntaName){
 
 // Event listener for retrieving saved recipes
 // Event Listener for the submit form button
+submitButton.addEventListener("click", buildRecipeSection);
