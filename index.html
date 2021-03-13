@@ -4,12 +4,84 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://unpkg.com/modern-css-reset/dist/reset.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css" integrity="sha256-ogmFxjqiTMnZhxCqVmcqTvjfe1Y/ec4WaRj/aQPvn+I=" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="./assets/style.css">
-    <title>Recipe Generation Application</title>
+    <title>WhiptUP</title>
 </head>
 <body>
+    <!-- Add header for the app here -->
+    <body>
+        <div id="header" class="head">
+            <h1>Recipes Catered to your Kitchen</h1>
+            <img src="brand-logo.png" class="logo">
+        </div>
+        
+        <div class="hero">
+            <img src="hero.jpg" class="hero-image">
+
+        
+
+<!-- Form container parameters of what ingredients/diet etc. -->
+                
+<div id="pantry" class="sidebar">
+    <input type="text" id="text-bar" placeholder="enter your ingredients">
+    <button id="pantry-button">Save Recipe</button>
+    <p>Dietary Requirements</p>
+    <select name="diet" id="diet">
+        <option></option>
+        <option>gluten-free</option>
+        <option>vegetarian</option>
+        <option>vegan</option>
+    </select>
     
+    <button id="submit-button">Let's Get Cooking!</button>
+    <ul>
+    
+    </ul>
+</div>
+
+</div>
+    
+    
+   
+
+    <!-- Recipes container -->
+    <section class="grid-x grid-margin-x">
+        <div class="card cell small-4" style="width: 300px;">
+            <div class="card-divider">
+                Recipe 1
+            </div>
+            <img src="https://picsum.photos/id/1080/300/200">
+            <div class="card-section">
+                <h4>This is a card.</h4>
+                <p>It has an easy to override visual style, and is appropriately subdued.</p>
+            </div>
+        </div>
+        <div class="card cell small-4" style="width: 300px;">
+            <div class="card-divider">
+             Recipe 2
+            </div>
+            <img src="https://picsum.photos/id/1080/300/200">
+            <div class="card-section">
+                <h4>This is a card.</h4>
+                <p>It has an easy to override visual style, and is appropriately subdued.</p>
+            </div>
+        </div>
+        <div class="card cell small-4" style="width: 300px;">
+            <div class="card-divider">
+                Recipe 3
+            </div>
+            <img src="https://picsum.photos/id/1080/300/200">
+            <div class="card-section">
+                <h4>This is a card.</h4>
+                <p>It has an easy to override visual style, and is appropriately subdued.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer sections for food donation and food scrap dropoff -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/js/foundation.min.js" integrity="sha256-pRF3zifJRA9jXGv++b06qwtSqX1byFQOLjqa2PTEb2o=" crossorigin="anonymous"></script>
     <script src="assets/script.js"></script>
 </body>
 </html>
