@@ -12,22 +12,22 @@
     <!-- Add header for the app here -->
     
     <!-- Form container parameters of what ingredients/diet etc. -->
-    <form class="grid-x">
+    <form class="grid-x" id="generate-div">
         <!-- Text input -->
         <div class="cell small-12">
             <div class="grid-x grid-padding-x">
-                <div class="medium-6 cell">
-                    <label>Input Label
+                <div id="input-div" class="medium-6 cell">
+                    <label>What ingredients do you have on hand?
                         <input type="text" placeholder=".medium-6.cell">
                     </label>
-                    <a class="button primary" href="#">Primary</a>
+                    <a class="button primary" href="#">Find Recipes</a>
                 </div>
             </div>
         </div>
     </form>
 
     <!-- Recipes container -->
-    <section class="grid-x grid-margin-x">
+    <section id="recipe-section" class="grid-x grid-margin-x">
         <div class="card cell small-4" style="width: 300px;">
             <div class="card-divider">
                 Recipe 1
@@ -61,6 +61,11 @@
     </section>
 
     <!-- Footer sections for food donation and food scrap dropoff -->
+    <footer class="footer">
+        <h4>Got scraps? Find out where you can drop-off your food scraps to do your part in limiting waste in the city.</h4>
+        <button id="scrap-button">Find Location</button>
+        <!-- <img class="footer-img" src="./assets/compost2.jpg" alt=""> -->
+    </footer>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/js/foundation.min.js" integrity="sha256-pRF3zifJRA9jXGv++b06qwtSqX1byFQOLjqa2PTEb2o=" crossorigin="anonymous"></script>
     <script src="assets/script.js"></script>
