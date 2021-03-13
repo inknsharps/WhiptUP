@@ -1,5 +1,5 @@
 // Query selectors for the HTML Elements
-let recipesContainer = document.querySelector(".grid-x");
+let recipesContainer = document.querySelector(".recipes-container");
 let submitButton = document.querySelector(".primary");
 let selectedIngredients = document.querySelector("input");
 
@@ -57,13 +57,15 @@ function buildRecipeCard(){
     cardSection.innerHTML = `
         <p>${recipeList.hits[randomRecipe].recipe.dishType}</p>
         <a href='${recipeList.hits[randomRecipe].recipe.url}'>Link to Recipe</a>
-        <button type="button" class="button primary">Save Recipe</button>`;
+        <button type="button" class="button primary save-recipe">Save Recipe</button>`;
 
     cardContainer.appendChild(cardHeader);
     cardContainer.appendChild(cardImage);
     cardContainer.appendChild(cardSection);
 
     recipesContainer.appendChild(cardContainer);
+    let saveRecipeButton = document.querySelector(".save-recipe");
+    saveRecipeButton.addEventListener("click", saveRecipeCard);
 }
 
 // Async function to build the recipes section
@@ -74,8 +76,20 @@ async function buildRecipeSection(){
     }
 }
 
-// Localstorage functionality to store recipes
-    // Save the currently selected recipe to localStorage in some format (HTML Element, or the current content of it)
+// Function to save the currently selected recipe to localStorage as an stringified HTML
+function saveRecipeCard(){
+    // Set the card itself to a variable
+    let recipeCard = this.parentElement.parentElement;
+    console.log(recipeCard.outerHTML);
+    localStorage.setItem("savedRecipe", JSON.stringify(recipeCard.outerHTML));
+}
+
+// Function to load a saved recipe
+async function loadRecipeCard(){
+    let savedRecipe = await JSON.parse(localStorage.getItem("savedRecipe"));
+    console.log(savedRecipe);
+    recipesContainer.innerHTML = savedRecipe;
+}
 
 // Function to build out the saved recipes section
     // Pull data from localStorage, and use that for constructing the recipe cards
