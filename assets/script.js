@@ -14,7 +14,10 @@ async function callRecipes(ingredients, diet){
     // EdamamID and Key 
     const edamamID = "160f3329";
     const edamamKey = "ac5580afc95ecea7517a637138b4d2e1";
-    let recipeAPI = `https://api.edamam.com/search?q=${ingredients}&health=${diet}&to=30&app_id=${edamamID}&app_key=${edamamKey}`
+    let recipeAPI = `https://api.edamam.com/search?q=${ingredients}&to=50&app_id=${edamamID}&app_key=${edamamKey}`
+    if (diet) {
+        recipeAPI += `&health=${diet}`
+    }
     let fetchedRecipes = await fetch(recipeAPI);
     recipeList = await fetchedRecipes.json();
     console.dir(recipeList);
