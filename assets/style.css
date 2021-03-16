@@ -1,109 +1,76 @@
-h1 {
-    padding-left: 10px;
-    padding-top: 25px;
-    position: relative;
-    margin-top: 15px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 25px;
-    color:teal;
-    font-weight: bolder;
+* {
+    box-sizing: border-box;
+  }
+  
+body {
+    margin: 5px;
+  }
+
+body, html {
+    height: 100%;
+    font-family:'Josefin Slab', serif;
 }
 
-.logo {
-    padding-right: 15px;
-}
 
-#header {
+.top-bar, .top-bar ul {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    height: 10rem;
+    align-content: space-around;
+    height: 50px;
+    background-color: white;
+}
+
+.centerLogo img {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
     background: white;
-}
+    color: white;
+    border-radius: 50px;
+    opacity: .9;
+  }
 
-.hero .hero-image {
-    width: 100%;
-    height: auto;
-    background-image: url("hero.jpg")
-    background-size: cover;
-    background-repeat: no-repeat;
-   }
+/* The hero image */
+.hero-image {
   
+  background-image: url("/Users/caitlintighe/Desktop/recipe_gen/img/hero.jpg");
+
+  /* Set a specific height */
+  height: 50%;
+
+  /* Position and center the image to scale nicely on all screens */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
   
-#submit:hover {
-    opacity: 1;
 }
 
-/* form sidebar */
-#submit {
-    margin-top: 15px;
-    opacity: 0.7
+.header-icon {
+    padding-top: 10px;
+    padding-right: 10px;
+    width:110px;
+    height:100px;
 }
 
-.sidebar {
-    position: center;
-    width: 40vw;
-    padding-bottom: 20px;
-    background-color: white;
-}
-
-#pantry {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    background-color: white;
-    padding: 10px 10px 10px 10px;
-}
-
-#pantry>p {
-    font-size: 0.9rem;
-    font-family: Helvetica;
-    margin: 0 auto 5px auto;
-    font-weight: 100;
-}
-
-#diet {
-    margin: 0 auto 10px auto;  
-    width: 150px;
-}
-
-#text-bar {
-    align-items: center;
-    text-align: center;
-}
-
-#pantry-button {
-    margin: 10px auto 10px auto;
-    width: 150px;
-    height: 1.5rem;
-    border-radius: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Spartan', sans-serif;
-    font-size: 0.8rem;
-    font-weight: 500;
-    opacity: 0.7
-}
-
-#pantry-button:hover {
-    opacity: 1;
-    font-size: 15px;
-}
-
-#submit-button {
-    padding: 3px;
-    margin: 10px auto 10px auto;
-    width: 150px;
-    height: 3rem;
-    border-radius: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Spartan', sans-serif;
-    font-weight: 500;
-}
-
-#submit-button:hover {
+.menu .menu-text {
+    font-size: 30px;
     color: black;
-    font-weight: bold;
+    font-family:'Josefin Slab', serif;
+    opacity: .8;
+    font-weight: lighter;
+    padding-top: 18px;
+}
+
+a {
+    display: flex;
+    align-content: flex-end;
+    font-size: 24px;
+    font-family:'Josefin Slab', serif;
+    color: black;
+}
+
+form {
+    padding: 50px;
+   
+}
+
