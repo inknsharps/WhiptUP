@@ -1,9 +1,10 @@
 * {
     box-sizing: border-box;
+    
   }
   
 body {
-    margin: 5px;
+    margin: 2px;
   }
 
 body, html {
@@ -12,12 +13,27 @@ body, html {
 }
 
 
-.top-bar, .top-bar ul {
+.top-bar {
     display: flex;
-    align-content: space-around;
+    justify-content: space-around;
+}
+
+
+.top-bar, .top-bar ul {
+    
     height: 50px;
     background-color: white;
 }
+
+.menu .menu-text {
+    font-size: 30px;
+    color: black;
+    font-family:'Josefin Slab', serif;
+    opacity: .8;
+    font-weight: lighter;
+    padding-top: 18px;
+}
+
 
 .centerLogo img {
     position: absolute;
@@ -42,35 +58,32 @@ body, html {
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
-  
-}
 
-.header-icon {
-    padding-top: 10px;
-    padding-right: 10px;
-    width:110px;
-    height:100px;
 }
-
-.menu .menu-text {
-    font-size: 30px;
-    color: black;
-    font-family:'Josefin Slab', serif;
-    opacity: .8;
-    font-weight: lighter;
-    padding-top: 18px;
-}
-
 a {
-    display: flex;
-    align-content: flex-end;
+    
     font-size: 24px;
     font-family:'Josefin Slab', serif;
     color: black;
 }
 
-form {
+.form {
+    height: 400px;
+    width: 660px;
     padding: 50px;
-   
+    margin: auto;
+    position: relative;
+    
+    
+}
+
+label, legend {
+    font-size:18px;
+}
+
+.button.expanded {
+    padding: 10px;
+    font-size: 24px;
+    font-weight: 400;
 }
 
