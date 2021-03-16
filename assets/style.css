@@ -4,8 +4,9 @@
   }
   
 body {
-    margin: 2px;
-  }
+    margin: 0;
+}
+
 
 body, html {
     height: 100%;
@@ -13,9 +14,14 @@ body, html {
 }
 
 
-.top-bar {
+.menu-text a {
     display: flex;
     justify-content: space-around;
+    align-content: space-around;
+}
+
+a:hover {
+    color:#1779ba;
 }
 
 
@@ -31,7 +37,7 @@ body, html {
     font-family:'Josefin Slab', serif;
     opacity: .8;
     font-weight: lighter;
-    padding-top: 18px;
+    
 }
 
 
@@ -86,4 +92,20 @@ label, legend {
     font-size: 24px;
     font-weight: 400;
 }
+
+.button.expanded:hover {
+    color: #1779ba;
+    background-color: white;
+}
+#btnAdd {
+    background-color: #1779ba;
+    color: white;
+    border: none;
+    
+}
+
+#btnAdd:hover {
+    color: #1779ba;
+    background-color: white;
+    
 

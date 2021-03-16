@@ -11,49 +11,52 @@
     <link rel="stylesheet" type="text/css" href="./assets/style.css">
     <title>WhiptUP</title>
 </head>
+
 <body>
     <!-- Add header for the app here -->
-    <div class="top-bar">
+       
+     <div class="top-bar">
         <div class="top-bar-left">
           <ul class="menu">
             <li class="menu-text"> Recipes Catered to Your Kitchen</li>
-            
-          </ul>
-        </div>
-        <div class="top-bar-right">
-            
-       <!-----Donations link to footer-->     
-            <a href="#">Donations</a>
-        </div>
-      </div>
-        
+        </ul>
+    </div>
     
-      <div class="hero-image">
-            <div class="centerLogo">
-                <img src="img/brand-logo-3.png">
+    <div class="top-bar-right">
+        <!-----Donations link to footer-->     
+        <a href="#footer">Donations</a>
+        </div>
+    </div>
+
+    <div class="hero-image">
+        <div class="centerLogo">
+            <img src="img/brand-logo-3.png" alt="brand-logo">
             </div>
         </div>
-    </div> 
+    
+     </div>  
+   
+    
     <!-- Form container parameters of what ingredients/diet etc. -->    
     
     <div class="form">
         <label>What ingredients are we working with?</label>
         <div class="input-group">
-            
-            
             <input class="input-group-field" type="text" placeholder="Chicken, eggs, parmesan, pickles, etc...">
-            
         <div class="input-group-button">
-            <input type="add" class="button" value="Add">
+            
+            <input type="button" id="btnAdd" value="Add" onclick="addItem()">
         </div>
-        </div>
+    </div>
         
             <legend>Dietary Restrictions</legend>
             <input type="radio" name="pokemon" value="Red" id="formRed" required><label for="formRed">None</label>
             <input type="radio" name="pokemon" value="Blue" id="formBlue"><label for="formBlue">Vegan</label>
             <input type="radio" name="pokemon" value="Yellow" id="formYellow"><label for="formYellow">Vegetarian</label>
           </fieldset>
-          <a class="button expanded" href="#">Dinner Awaits</a>  
+
+          
+                <a class="button expanded" href="#">Dinner Awaits</a>  
           
         </div>
         
@@ -61,7 +64,7 @@
         </div>
     </div>
     
-
+                 
     <!-- Recipes container -->
     <section class="grid-x grid-margin-x">
         <div class="card cell small-4" style="width: 300px;">
