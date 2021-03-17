@@ -1,8 +1,11 @@
 // Query selectors for the HTML Elements
-// let recipesContainer = document.querySelector(".recipes-container");
+let recipesContainer = document.querySelector(".recipe-cards");
 let submitButton = document.querySelector("#submit-button");
 let selectedDiet = document.querySelector("#diet");
 let selectedIngredients = document.querySelector("input");
+var foodScrapTableEl = document.querySelector('#foodScrapTable');
+var foodScrapHeaderEl = document.querySelector('#tableHeader')
+var ntaNameEl = document.querySelector('#ntaName')
 
 // Declare variable for recipe information
 let recipeList = {};
@@ -25,21 +28,24 @@ async function callRecipes(ingredients, diet){
 
 // Async function that calls the list of Food Scrap Dropoff locations by neightborhood name, that are open year round
 // We should probably provide the ntaNames that are acceptable in this dataset
-async function callFoodScrapDirectory(ntaName){
-    let foodScrapList = `https://data.cityofnewyork.us/resource/if26-z6xq.json?ntaname=${ntaName}&open_months=Year%20Round`
-    let foodScrapJSON = await fetch(foodScrapList);
-    let foodScrapDirectory = await foodScrapJSON.json();
-    console.dir(foodScrapDirectory);
-};
+// async function callFoodScrapDirectory(ntaName){
+//     let foodScrapList = `https://data.cityofnewyork.us/resource/if26-z6xq.json?ntaname=${ntaName}&open_months=Year%20Round`
+//     let foodScrapJSON = await fetch(foodScrapList);
+//     let foodScrapDirectory = await foodScrapJSON.json();
+//     console.dir(foodScrapDirectory);
+// };
+function callFoodScrapDirectory(ntaName){
+    fetch('https://data.cityofnewyork.us/resource/if26-z6xq.json?ntaname=' + ntaName + '&open_months=Year%20Round')
+    .then(function(response){return response.json()})
+    .then(function(data){
+        console.log(data)
+        foodScrapTableEl.textContent=''
+        foodScrapHeaderEl.textContent=''
+        printFoodScrapLocations(data);
+    })
+    .catch(function(){})
+}
 
-// Async function that calls the list of DonateNYC locations, that accepts Food/Beverage, by neighborhood name
-// We should probably provide the ntaNames that are acceptable in this dataset
-async function callDonateNYCDirectory(ntaName){
-    let donateNYCList = `https://data.cityofnewyork.us/resource/gkgs-za6m.json?ntaname=${ntaName}&categoriesaccepted=Food/Beverage`
-    let donateNYCJSON = await fetch(donateNYCList);
-    let donateNYCDirectory = await donateNYCJSON.json();
-    console.dir(donateNYCDirectory);
-};
 
 // Function to build out the recipe cards when the submit form button is pressed
 function buildRecipeCard(){
@@ -124,23 +130,75 @@ function loadRecipesList(){
     // Then rebuild the recipe section
 
 // Function to generate and build out a list of places to drop off food scraps
-    // Needs to grab the data from callFoodScrapDirectory, based on the neighborhood selected
-    // Then construct HTML elements using the data from OpenDataNYC APIs, useful ones that they provide are:
-        // .food_scrap_drop_off_site (the name of the site)
-        // .operation_day (which day it's open)
-        // .hours_from (hour opening)
-        // .hours_to (hour closing)
-        // .location (address of the site)
-        // .website (the site of the program that is handling this drop off)
+function printFoodScrapLocations(resultObj) {
 
-// Function to generate and build out a list of places to drop off food donations
-    // Needs to grab the data from callDonateNYCDirectory, based on the neighborhood selected
-    // Then construct HTML elements using the data from OpenDataNYC APIs, useful ones that they provide are:
-        // .site (the name of the site)
-        // .address (the address of the site)
-        // .hours (operation hours)
-        // .website (the site of the program that is handling this donation)
-        // .additionalmaterialinformation (more detailed info about food donation and distribution)
+    var headerName = document.createElement('th')
+    headerName.setAttribute("width", "500")
+    headerName.textContent="Name"
+
+    var headerDays = document.createElement('th')
+    headerDays.setAttribute("width", "200")
+    headerDays.textContent="Days Open"
+
+    var headerOpen = document.createElement('th')
+    headerOpen.setAttribute("width", "200")
+    headerOpen.textContent="Opening Hours"
+
+    var headerClose = document.createElement('th')
+    headerClose.setAttribute("width", "200")
+    headerClose.textContent="Closing Hours"
+
+    var headerAddress = document.createElement('th')
+    headerAddress.setAttribute("width", "600")
+    headerAddress.textContent="Address"
+
+    var headerWebsite = document.createElement('th')
+    headerWebsite.setAttribute("width", "600")
+    headerWebsite.textContent="Website"
+
+    foodScrapHeaderEl.append(headerName, headerDays, headerOpen, headerClose, headerAddress, headerWebsite)
+
+    
+    for (var i=0; i < resultObj.length; i++) {
+        var resultRow = document.createElement('tr');
+        resultRow.classList.add('customRow1')
+        foodScrapTableEl.append(resultRow)
+
+        var nameCol = document.createElement('td');
+        nameCol.textContent=resultObj[i].food_scrap_drop_off_site;
+        resultRow.appendChild(nameCol)
+
+        var daysCol = document.createElement('td');
+        daysCol.textContent=resultObj[i].operation_day;
+        resultRow.appendChild(daysCol)
+
+        var openCol = document.createElement('td');
+        openCol.textContent=resultObj[i].hours_to;
+        resultRow.appendChild(openCol)
+
+        var closeCol = document.createElement('td');
+        closeCol.textContent=resultObj[i].hours_from;
+        resultRow.appendChild(closeCol);
+
+        var addressCol = document.createElement('td')
+        addressCol.textContent=resultObj[i].location;
+        resultRow.appendChild(addressCol);
+
+        var webCol = document.createElement('td');
+        var webLink = document.createElement('a')
+        webCol.append(webLink)
+        webLink.textContent=resultObj[i].website
+        webLink.setAttribute('href', resultObj[i].website)
+        resultRow.appendChild(webCol)
+    }
+}
+
+ntaNameEl.addEventListener('change', function(event){
+    event.preventDefault();
+    var neighborhood = event.target.value
+    console.log(neighborhood)
+    callFoodScrapDirectory(neighborhood)
+})
 
 // Event listener for retrieving saved recipes
 // Event Listener for the submit form button
