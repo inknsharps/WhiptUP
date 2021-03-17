@@ -1,5 +1,5 @@
 // Query selectors for the HTML Elements
-let recipesContainer = document.querySelector(".recipes-container");
+// let recipesContainer = document.querySelector(".recipes-container");
 let submitButton = document.querySelector("#submit-button");
 let selectedDiet = document.querySelector("#diet");
 let selectedIngredients = document.querySelector("input");
@@ -118,7 +118,6 @@ function loadRecipesList(){
     savedRecipesContainer.appendChild(savedRecipesList);
     recipesContainer.appendChild(savedRecipesContainer);
 }
-
 
 // Function to build out the saved recipes section
     // Pull data from localStorage, and use that for constructing the recipe cards
