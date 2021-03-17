@@ -1,3 +1,4 @@
+<<<<<<< HEAD
  :root {
      --light-blue: rgb(140, 230, 230);
      --main-font: 'Redressed', cursive;
@@ -177,4 +178,213 @@ h1 {
 #scrap-button:hover {
     background-color: rgb(19, 197, 48);
     border: none;
+=======
+  :root {
+  --main-color: rgb(30, 177, 190);
+  --font-color: black;
+  }
+
+* {
+    box-sizing: border-box;
+    
+  }
+  
+body {
+    margin: 0;
+    color: var(--main-color);
+   
+}
+
+
+body, html {
+    height: 100%;
+    font-family:'Josefin Slab', serif;
+    color: var(--main-color);
+}
+
+
+.menu-text a {
+    display: flex;
+    justify-content: space-around;
+    align-content: space-around;
+    color: var(--main-color);
+}
+
+a:hover {
+    color: var(--main-color);
+}
+
+
+.top-bar, .top-bar ul {
+    color: var(--main-color);
+    height: 50px;
+    background-color: white;
+}
+
+.menu .menu-text {
+    font-size: 30px;
+    color: var(--main-color);
+    font-family:'Josefin Slab', serif;
+    opacity: .8;
+    font-weight: bold;
+    
+}
+
+
+.centerLogo img {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    color: var(--main-color);
+    border-radius: 50px;
+    opacity: .9;
+  }
+
+/* The hero image */
+.hero-image {
+  
+  background-image: url("../img/hero.jpg");
+
+  /* Set a specific height */
+  height: 50%;
+
+  /* Position and center the image to scale nicely on all screens */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+
+}
+a {
+    
+    font-size: 24px;
+    font-family:'Josefin Slab', serif;
+    color: var(--main-color);
+    font-weight: bold;
+}
+
+.form {
+    height: 400px;
+    width: 660px;
+    padding: 50px;
+    margin: auto;
+    position: relative;
+    color: var(--main-color);
+    
+    
+}
+
+label, legend {
+    font-size:18px;
+    color: var(--main-color);
+}
+
+.button.expanded {
+    padding: 10px;
+    font-size: 24px;
+    font-weight: 400;
+    color: var(--font-color);
+    background-color: var(--main-color);
+}
+
+.button.expanded:hover {
+    
+    background-color: white;
+    color: var(--main-color);
+}
+#btnAdd {
+   
+    border: none;
+    color: var(--font-color);
+    background-color: var(--main-color);
+    
+}
+
+#btnAdd:hover {
+    color: var(--main-color);
+    background-color: white;
+}
+
+
+.recipe-cards {
+    
+    display: grid;
+    grid-template-columns: auto auto auto;
+    justify-content: space-around;
+    
+}
+
+
+.card-divider {
+    background-color:var(--main-color);
+    opacity: .85;
+    
+}
+
+.card-title {
+    opacity: 1;
+    font-size: 24px;
+    padding-left: 35%;
+    
+}
+
+.card-section h4 {
+    font-family: 'Josefin Slab', serif;
+}
+
+
+#footer {
+    position: relative;
+    background-color:var(--main-color);
+    height: 3px;
+    width: 100%;
+    margin-top: 60px;
+    
+    
+ }
+
+ h5 {
+     padding-top: 10px;
+     font-size: 24px;
+     color:var(--font-color);
+     font-family: 'Josefin Slab', serif;
+     text-align: center;
+ }
+
+ .save-button {
+     font-size: 18px;
+ }
+
+#scrap-button {
+    height:20px; 
+    width:100px; 
+    margin: -20px -50px; 
+    position:relative;
+    top:50%; 
+    left:50%;
+    border: solid 1px black;
+    font-size: 20px;
+    padding: 5px;
+    color:var(--font-color);
+    font-weight:lighter;
+}
+
+#scrap-button:hover {
+    border: none;
+    background-color: rgb(17, 190, 19);
+    opacity: .8;
+}
+
+.saved-recipe-li{
+    margin: 1vh;
+    padding: 1vh;
+    background-color: lightblue;
+}
+
+.saved-recipe-li:nth-child(odd) {
+    margin: 1vh;
+    padding: 1vh;
+    background-color: lightgrey;
+>>>>>>> 70fd919f2e9573cdae87b06a13f3abf9a9c386ea
 }
