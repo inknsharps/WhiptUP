@@ -194,5 +194,15 @@ label, legend {
     background-color: rgb(17, 190, 19);
     opacity: .8;
 }
-     
 
+.saved-recipe-li{
+    margin: 1vh;
+    padding: 1vh;
+    background-color: lightblue;
+}
+
+.saved-recipe-li:nth-child(odd) {
+    margin: 1vh;
+    padding: 1vh;
+    background-color: lightgrey;
+}

@@ -117,13 +117,17 @@ function saveRecipeLink(){
 function loadRecipesList(){
     clearRecipeContainer();
     let savedRecipesContainer = document.createElement("div");
-    savedRecipesContainer.className = "row align-middle small-8";
+    savedRecipesContainer.className = "card cell small-4";
     savedRecipesContainer.setAttribute("style", "grid-column:2");
 
-    let savedRecipesHeader = document.createElement("p");
-    savedRecipesHeader.textContent = "Saved Recipes";
-    savedRecipesHeader.className = "card-title";
+    let savedRecipesHeader = document.createElement("div");
+    savedRecipesHeader.className = "card-divider";
     savedRecipesContainer.appendChild(savedRecipesHeader);
+
+    let savedRecipesHeaderText = document.createElement("p");
+    savedRecipesHeaderText.textContent = "Saved Recipes";
+    savedRecipesHeaderText.className = "card-title";
+    savedRecipesHeader.appendChild(savedRecipesHeaderText);
 
     let savedRecipesList = document.createElement("ul");
 
@@ -134,7 +138,8 @@ function loadRecipesList(){
         console.log(savedRecipeLink);
 
         let savedRecipeListItem = document.createElement("li");
-        let savedRecipeInfo = `${savedRecipeName}: <a href=${savedRecipeLink}>Link to Recipe</a>`
+        savedRecipeListItem.className = "saved-recipe-li";
+        let savedRecipeInfo = `${savedRecipeName}: <a href=${savedRecipeLink}>Link to Recipe</a>`;
         savedRecipeListItem.innerHTML = savedRecipeInfo;
         
         savedRecipesList.appendChild(savedRecipeListItem);
@@ -143,10 +148,6 @@ function loadRecipesList(){
     savedRecipesContainer.appendChild(savedRecipesList);
     recipesContainer.appendChild(savedRecipesContainer);
 }
-
-// Function to build out the saved recipes section
-    // Pull data from localStorage, and use that for constructing the recipe cards
-    // Then rebuild the recipe section
 
 // Function to generate and build out a list of places to drop off food scraps
 function printFoodScrapLocations(resultObj) {
