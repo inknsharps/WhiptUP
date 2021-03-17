@@ -14,62 +14,46 @@
 
 <body>
     <!-- Add header for the app here -->
-       
-     <div class="top-bar">
+    <div class="top-bar">
         <div class="top-bar-left">
-          <ul class="menu">
-            <li class="menu-text"> Recipes Catered to Your Kitchen</li>
-        </ul>
-    </div>
-    
-    <div class="top-bar-right">
-        <!-----Donations link to footer-->     
-        <a href="#footer">Donations</a>
+            <ul class="menu">
+                <li class="menu-text"> Recipes Catered to Your Kitchen</li>
+            </ul>
+        </div>
+        <div class="top-bar-right">
+            <ul class="dropdown menu" data-dropdown-menu>
+                <!-- Saved Recipes Button -->
+                <li><a href="#recipe-card" class="saved-recipes">Saved Recipes</a></li>
+                <!-----Donations link to footer-->     
+                <li><a href="#footer">Compost Locations</a></li>
+            </ul>
         </div>
     </div>
 
     <div class="hero-image">
         <div class="centerLogo">
             <img src="img/brand-logo-3.png" alt="brand-logo">
-            </div>
         </div>
-    
-     </div>  
-   
-    
+    </div>
+      
     <!-- Form container parameters of what ingredients/diet etc. -->    
-    
     <div class="form">
         <label>What ingredients are we working with?</label>
         <div class="input-group">
             <input class="input-group-field" type="text" placeholder="Chicken, eggs, parmesan, pickles, etc...">
         <div class="input-group-button">
-           
-            
-        
         </div>
+        </div>
+        <legend>Dietary Restrictions</legend>
+            <input type="radio" name="diet" value="" id="none" required checked><label for="formRed">None</label>
+            <input type="radio" name="diet" value="vegan" id="vegan"><label for="formBlue">Vegan</label>
+            <input type="radio" name="diet" value="vegetarian" id="vegetarian"><label for="formYellow">Vegetarian</label>
+            <a class="button expanded" id="submit-button" href="#">Dinner Awaits</a>
     </div>
-        
-            <legend>Dietary Restrictions</legend>
-            <input type="radio" name="pokemon" value="Red" id="formRed" required><label for="formRed">None</label>
-            <input type="radio" name="pokemon" value="Blue" id="formBlue"><label for="formBlue">Vegan</label>
-            <input type="radio" name="pokemon" value="Yellow" id="formYellow"><label for="formYellow">Vegetarian</label>
-          </fieldset>
-
-          
-                <a class="button expanded" id="submit-button" href="#">Dinner Awaits</a>
-     
-          
-        </div>
-        
-       
-        </div>
-    </div>
-    
                  
     <!-- Recipes container -->
     <section class="recipe-cards" id="recipe-card">
-            <div class="card cell small-4" style="width: 300px;">
+            <!-- <div class="card cell small-4" style="width: 300px;">
             <div class="card-divider">
                 <p class="card-title">Recipe 1</p>
             </div>
@@ -129,103 +113,100 @@
                 <h4>This is a card.</h4>
                 <a href="#" class="save-button">Save Recipe</a>
             </div>
-        </div>
+        </div> -->
     </section>
 
+    <!-- Footer sections for food donation and food scrap dropoff -->
     <footer id="footer">
         <h5>Got scraps? Find out where you can drop-off your food scraps to do your part in limiting waste in the city. ♻️</h4>
             <a href="#" id="scrap-button">Find a Location!</a>
         <div class="grid-x grid-padding-x align-center">
             <div class="cell small-10">
-            <label>Select Neighborhood
-                <select id=ntaName>
-                  <option value="">Select One...</option>
-                  <option value="Astoria">Astoria</option>
-                  <option value="Battery Park City-Lower Manhattan">Battery Park City-Lower Manhattan</option>
-                  <option value="Bay Ridge">Bay Ridge</option>
-                  <option value="Bellerose">Bellerose</option>
-                  <option value="Brooklyn Heights-Cobble Hill">Brooklyn Heights-Cobble Hill</option>
-                  <option value="Bushwick North">Bushwick North</option>
-                  <option value="Carroll Gardens-Columbia Street-Red Hook">Carroll Gardens-Columbia Street-Red Hook</option>
-                  <option value="Central Harlem North-Polo Grounds">Central Harlem North-Polo Grounds</option>
-                  <option value="Central Harlem South">Central Harlem South</option>
-                  <option value="Chinatown">Chinatown</option>
-                  <option value="Clinton">Clinton</option>
-                  <option value="Crown Heights North">Crown Heights North</option>
-                  <option value="Crown Heights South">Crown Heights South</option>
-                  <option value="East Concourse-Concourse Village">East Concourse-Concourse Village</option>
-                  <option value="East Harlem North">East Harlem North</option>
-                  <option value="East Harlem South">East Harlem South</option>
-                  <option value="East New York">East New York</option>
-                  <option value="East Tremont">East Tremont</option>
-                  <option value="East Village">East Village</option>
-                  <option value="East Williamsburg">East Williamsburg</option>
-                  <option value="Elmhurst">Elmhurst</option>
-                  <option value="Flatbush">Flatbush</option>
-                  <option value="Flushing">Flushing</option>
-                  <option value="Fordham South">Fordham South</option>
-                  <option value="Fort Greene">Fort Greene</option>
-                  <option value="Greenpoint">Greenpoint</option>
-                  <option value="Hamilton Heights">Hamilton Heights</option>
-                  <option value="Hammels-Arverne-Edgemere">Hammels-Arverne-Edgemere</option>
-                  <option value="Hudson Yards-Chelsea-Flatiron-Union Square">Hudson Yards-Chelsea-Flatiron-Union Square</option>
-                  <option value="Hunters Point-Sunnyside-West Maspeth">Hunters Point-Sunnyside-West Maspeth</option>
-                  <option value="Hunts Point">Hunts Point</option>
-                  <option value="Jackson Heights">Jackson Heights</option>
-                  <option value="Kew Gardens">Kew Gardens</option>
-                  <option value="Lenox Hill-Roosevelt Island">Lenox Hill-Roosevelt Island</option>
-                  <option value="Lincoln Sqaure">Lincoln Square</option>
-                  <option value="Lower East Side">Lower East Side</option>
-                  <option value="Manhattanville">Manhattanville</option>
-                  <option value="Marbel Hill-Inwood">Marbel Hill-Inwood</option>
-                  <option value="Melrose South-Mott Haven North">Melrose South-Mott Haven North</option>
-                  <option value="Morningside Heights">Morningside Heights</option>
-                  <option value="Morrisania-Melrose">Morrisania-Melrose</option>
-                  <option value="Mott Haven-Port Morris">Mott Haven-Port Morris</option>
-                  <option value="North Side-South Side">North Side-South Side</option>
-                  <option value="Norwood">Norwood</option>
-                  <option value="Old Astoria">Old Astoria</option>
-                  <option value="park-cemetery-etc-Brooklyn">park-cemetery-etc-Brooklyn</option>
-                  <option value="park-cemetery-etc-Manhattan">park-cemetery-etc-Manhattan</option>
-                  <option value="Parkchester">Parkchester</option>
-                  <option value="Park Slope-Gowanus">Park Slope-Gowanus</option>
-                  <option value="Prospect Heights">Prospect Heights</option>
-                  <option value="Queensbridge-Ravenswood-Long Island City">Queensbridge-Ravenswood-Long Island City</option>
-                  <option value="Rego Park">Rego Park</option>
-                  <option value="Rugby-Remsen Village">Rugby-Remsen Village</option>
-                  <option value="SoHo-TriBeCa-Civic Center-Little Italy">SoHo-TriBeCa-Civic Center-Little Italy</option>
-                  <option value="Spuyten Duyvil-Kingsbridge">Spuyten Duyvil-Kingsbridge</option>
-                  <option value="Steinway">Steinway</option>
-                  <option value="Turtle Bay-East Midtown">Turtle Bay-East Midtown</option>
-                  <option value="Upper East Side-Carnegie Hill">Upper East Side-Carnegie Hill</option>
-                  <option value="Upper West Side">Upper West Side</option>
-                  <option value="Van Cortlandt Village">Van Cortlandt Village</option>
-                  <option value="Washington Heights North">Washington Heights North</option>
-                  <option value="Washington Heights South">Washington Heights South</option>
-                  <option value="West Concourse">West Concourse</option>
-                  <option value="West New Brighton-New Brighton-St. George">West New Brighton-New Brighton-St. George</option>
-                  <option value="West Village">West Village</option>
-                  <option value="Yorkville">Yorkville</option>
-                </select>
-              </label>
-        
-            <table>
-                <thead id="tableHeader">
-                </thead>
-                <tbody id="foodScrapTable">
-                    
-                </tbody>
-            </table>
-         </div>
-        </div>
+                <label>Select Neighborhood
+                    <select id=ntaName>
+                    <option value="">Select One...</option>
+                    <option value="Astoria">Astoria</option>
+                    <option value="Battery Park City-Lower Manhattan">Battery Park City-Lower Manhattan</option>
+                    <option value="Bay Ridge">Bay Ridge</option>
+                    <option value="Bellerose">Bellerose</option>
+                    <option value="Brooklyn Heights-Cobble Hill">Brooklyn Heights-Cobble Hill</option>
+                    <option value="Bushwick North">Bushwick North</option>
+                    <option value="Carroll Gardens-Columbia Street-Red Hook">Carroll Gardens-Columbia Street-Red Hook</option>
+                    <option value="Central Harlem North-Polo Grounds">Central Harlem North-Polo Grounds</option>
+                    <option value="Central Harlem South">Central Harlem South</option>
+                    <option value="Chinatown">Chinatown</option>
+                    <option value="Clinton">Clinton</option>
+                    <option value="Crown Heights North">Crown Heights North</option>
+                    <option value="Crown Heights South">Crown Heights South</option>
+                    <option value="East Concourse-Concourse Village">East Concourse-Concourse Village</option>
+                    <option value="East Harlem North">East Harlem North</option>
+                    <option value="East Harlem South">East Harlem South</option>
+                    <option value="East New York">East New York</option>
+                    <option value="East Tremont">East Tremont</option>
+                    <option value="East Village">East Village</option>
+                    <option value="East Williamsburg">East Williamsburg</option>
+                    <option value="Elmhurst">Elmhurst</option>
+                    <option value="Flatbush">Flatbush</option>
+                    <option value="Flushing">Flushing</option>
+                    <option value="Fordham South">Fordham South</option>
+                    <option value="Fort Greene">Fort Greene</option>
+                    <option value="Greenpoint">Greenpoint</option>
+                    <option value="Hamilton Heights">Hamilton Heights</option>
+                    <option value="Hammels-Arverne-Edgemere">Hammels-Arverne-Edgemere</option>
+                    <option value="Hudson Yards-Chelsea-Flatiron-Union Square">Hudson Yards-Chelsea-Flatiron-Union Square</option>
+                    <option value="Hunters Point-Sunnyside-West Maspeth">Hunters Point-Sunnyside-West Maspeth</option>
+                    <option value="Hunts Point">Hunts Point</option>
+                    <option value="Jackson Heights">Jackson Heights</option>
+                    <option value="Kew Gardens">Kew Gardens</option>
+                    <option value="Lenox Hill-Roosevelt Island">Lenox Hill-Roosevelt Island</option>
+                    <option value="Lincoln Sqaure">Lincoln Square</option>
+                    <option value="Lower East Side">Lower East Side</option>
+                    <option value="Manhattanville">Manhattanville</option>
+                    <option value="Marbel Hill-Inwood">Marbel Hill-Inwood</option>
+                    <option value="Melrose South-Mott Haven North">Melrose South-Mott Haven North</option>
+                    <option value="Morningside Heights">Morningside Heights</option>
+                    <option value="Morrisania-Melrose">Morrisania-Melrose</option>
+                    <option value="Mott Haven-Port Morris">Mott Haven-Port Morris</option>
+                    <option value="North Side-South Side">North Side-South Side</option>
+                    <option value="Norwood">Norwood</option>
+                    <option value="Old Astoria">Old Astoria</option>
+                    <option value="park-cemetery-etc-Brooklyn">park-cemetery-etc-Brooklyn</option>
+                    <option value="park-cemetery-etc-Manhattan">park-cemetery-etc-Manhattan</option>
+                    <option value="Parkchester">Parkchester</option>
+                    <option value="Park Slope-Gowanus">Park Slope-Gowanus</option>
+                    <option value="Prospect Heights">Prospect Heights</option>
+                    <option value="Queensbridge-Ravenswood-Long Island City">Queensbridge-Ravenswood-Long Island City</option>
+                    <option value="Rego Park">Rego Park</option>
+                    <option value="Rugby-Remsen Village">Rugby-Remsen Village</option>
+                    <option value="SoHo-TriBeCa-Civic Center-Little Italy">SoHo-TriBeCa-Civic Center-Little Italy</option>
+                    <option value="Spuyten Duyvil-Kingsbridge">Spuyten Duyvil-Kingsbridge</option>
+                    <option value="Steinway">Steinway</option>
+                    <option value="Turtle Bay-East Midtown">Turtle Bay-East Midtown</option>
+                    <option value="Upper East Side-Carnegie Hill">Upper East Side-Carnegie Hill</option>
+                    <option value="Upper West Side">Upper West Side</option>
+                    <option value="Van Cortlandt Village">Van Cortlandt Village</option>
+                    <option value="Washington Heights North">Washington Heights North</option>
+                    <option value="Washington Heights South">Washington Heights South</option>
+                    <option value="West Concourse">West Concourse</option>
+                    <option value="West New Brighton-New Brighton-St. George">West New Brighton-New Brighton-St. George</option>
+                    <option value="West Village">West Village</option>
+                    <option value="Yorkville">Yorkville</option>
+                    </select>
+                </label>
             
+                <table>
+                    <thead id="tableHeader">
+                    </thead>
+                    <tbody id="foodScrapTable">
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </footer>
 
-    <!-- Footer sections for food donation and food scrap dropoff -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/js/foundation.min.js" integrity="sha256-pRF3zifJRA9jXGv++b06qwtSqX1byFQOLjqa2PTEb2o=" crossorigin="anonymous"></script>
     <script src="assets/script.js"></script>
-
     
 </body>
 </html>

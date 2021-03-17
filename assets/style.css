@@ -63,7 +63,7 @@ a:hover {
 /* The hero image */
 .hero-image {
   
-  background-image: url("/Users/caitlintighe/Desktop/recipe_gen/img/hero.jpg");
+  background-image: url("../img/hero.jpg");
 
   /* Set a specific height */
   height: 50%;
