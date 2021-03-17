@@ -1,3 +1,11 @@
+// Query selectors for the HTML Elements
+let recipesContainer = document.querySelector(".grid-x");
+let submitButton = document.querySelector(".primary");
+let selectedIngredients = document.querySelector("input");
+
+// Declare variable for recipe information
+let recipeList = {};
+
 // Make APIs Calls functionality
 // Async function that calls the Edamam API with ingredients, these can be separated by commas
 // Consider adding healthLabels as a parameter to the function.
@@ -7,7 +15,7 @@ async function callRecipes(ingredients){
     const edamamKey = "ac5580afc95ecea7517a637138b4d2e1";
     let recipeAPI = `https://api.edamam.com/search?q=${ingredients}&app_id=${edamamID}&app_key=${edamamKey}`
     let fetchedRecipes = await fetch(recipeAPI);
-    let recipeList = await fetchedRecipes.json();
+    recipeList = await fetchedRecipes.json();
     console.dir(recipeList);
 }
 
@@ -30,13 +38,41 @@ async function callDonateNYCDirectory(ntaName){
 };
 
 // Function to build out the recipe cards when the submit form button is pressed
-    // Needs to grab the data from callRecipes
-    // Then construct HTML elements using the data from Edamam API, useful ones that they provide are:
-        // .image (image of the dish)
-        // .label (the name of the dish)
-        // .dishType (main course, etc.)
-        // .url (original recipe link)
-        // We should also have a SAVE RECIPE button here
+function buildRecipeCard(){
+    let randomRecipe = Math.floor(Math.random()*recipeList.hits.length);
+
+    let cardContainer = document.createElement("div");
+    cardContainer.className = "card cell small-4";
+    cardContainer.setAttribute("style", "width: 300px");
+
+    let cardHeader = document.createElement("div");
+    cardHeader.className = "card-divider" ;
+    cardHeader.innerText = recipeList.hits[randomRecipe].recipe.label;
+
+    let cardImage = document.createElement("img");
+    cardImage.src = recipeList.hits[randomRecipe].recipe.image;
+
+    let cardSection = document.createElement("div");
+    cardSection.className = "card-section";
+    cardSection.innerHTML = `
+        <p>${recipeList.hits[randomRecipe].recipe.dishType}</p>
+        <a href='${recipeList.hits[randomRecipe].recipe.url}'>Link to Recipe</a>
+        <button type="button" class="button primary">Save Recipe</button>`;
+
+    cardContainer.appendChild(cardHeader);
+    cardContainer.appendChild(cardImage);
+    cardContainer.appendChild(cardSection);
+
+    recipesContainer.appendChild(cardContainer);
+}
+
+// Async function to build the recipes section
+async function buildRecipeSection(){
+    await callRecipes(selectedIngredients.value);
+    for (let i = 0; i < 6; i++){
+        buildRecipeCard();
+    }
+}
 
 // Localstorage functionality to store recipes
     // Save the currently selected recipe to localStorage in some format (HTML Element, or the current content of it)
@@ -66,3 +102,4 @@ async function callDonateNYCDirectory(ntaName){
 
 // Event listener for retrieving saved recipes
 // Event Listener for the submit form button
+submitButton.addEventListener("click", buildRecipeSection);
