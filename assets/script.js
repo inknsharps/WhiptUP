@@ -1,23 +1,21 @@
 // Query selectors for the HTML Elements
 let recipesContainer = document.querySelector(".recipe-cards");
 let submitButton = document.querySelector("#submit-button");
-let selectedDiet = document.querySelector("#diet");
-let selectedIngredients = document.querySelector("input");
+let selectedIngredients = document.querySelector(".input-group-field");
+let savedRecipesButton = document.querySelector(".saved-recipes");
 var foodScrapTableEl = document.querySelector('#foodScrapTable');
-var foodScrapHeaderEl = document.querySelector('#tableHeader')
-var ntaNameEl = document.querySelector('#ntaName')
+var foodScrapHeaderEl = document.querySelector('#tableHeader');
+var ntaNameEl = document.querySelector('#ntaName');
 
 // Declare variable for recipe information
 let recipeList = {};
 
-// Make APIs Calls functionality
 // Async function that calls the Edamam API with ingredients, these can be separated by commas
-// Consider adding healthLabels as a parameter to the function.
 async function callRecipes(ingredients, diet){
     // EdamamID and Key 
     const edamamID = "160f3329";
     const edamamKey = "ac5580afc95ecea7517a637138b4d2e1";
-    let recipeAPI = `https://api.edamam.com/search?q=${ingredients}&to=50&app_id=${edamamID}&app_key=${edamamKey}`
+    let recipeAPI = `https://api.edamam.com/search?q=${ingredients}&to=100&app_id=${edamamID}&app_key=${edamamKey}`
     if (diet) {
         recipeAPI += `&health=${diet}`
     }
@@ -26,14 +24,7 @@ async function callRecipes(ingredients, diet){
     console.dir(recipeList);
 }
 
-// Async function that calls the list of Food Scrap Dropoff locations by neightborhood name, that are open year round
-// We should probably provide the ntaNames that are acceptable in this dataset
-// async function callFoodScrapDirectory(ntaName){
-//     let foodScrapList = `https://data.cityofnewyork.us/resource/if26-z6xq.json?ntaname=${ntaName}&open_months=Year%20Round`
-//     let foodScrapJSON = await fetch(foodScrapList);
-//     let foodScrapDirectory = await foodScrapJSON.json();
-//     console.dir(foodScrapDirectory);
-// };
+// Function to call the OpenDataNYC endpoint for food scrap locations by neighborhood name
 function callFoodScrapDirectory(ntaName){
     fetch('https://data.cityofnewyork.us/resource/if26-z6xq.json?ntaname=' + ntaName + '&open_months=Year%20Round')
     .then(function(response){return response.json()})
@@ -43,9 +34,8 @@ function callFoodScrapDirectory(ntaName){
         foodScrapHeaderEl.textContent=''
         printFoodScrapLocations(data);
     })
-    .catch(function(){})
+    .catch(function(){alert("Error!")})
 }
-
 
 // Function to build out the recipe cards when the submit form button is pressed
 function buildRecipeCard(){
@@ -56,18 +46,35 @@ function buildRecipeCard(){
     cardContainer.setAttribute("style", "width: 300px");
 
     let cardHeader = document.createElement("div");
-    cardHeader.className = "card-divider" ;
-    cardHeader.innerText = recipeList.hits[randomRecipe].recipe.label;
+    cardHeader.className = "card-divider";
+    cardHeader.innerHTML = `<p class="card-title">${recipeList.hits[randomRecipe].recipe.label}</p>`;
 
     let cardImage = document.createElement("img");
     cardImage.src = recipeList.hits[randomRecipe].recipe.image;
 
+    // If else statement for handling dish types in the API call
+    let dishCategory;
+    if (recipeList.hits[randomRecipe].recipe.dishType === undefined){
+        dishCategory= "Uncategorized";
+    } else {
+        let dishTypeRaw = recipeList.hits[randomRecipe].recipe.dishType;
+        for (let i = 0; i < dishTypeRaw.length; i++){
+            let dishTypeCaps = dishTypeRaw[i]
+                .split(" ")
+                .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
+                .join(' ');
+            console.log(dishTypeCaps)
+            dishCategory = dishTypeCaps;
+        }
+    }
+
     let cardSection = document.createElement("div");
-    cardSection.className = "card-section";
+    cardSection.className = "grid-x card-section";
     cardSection.innerHTML = `
-        <p>${recipeList.hits[randomRecipe].recipe.dishType}</p>
-        <a href='${recipeList.hits[randomRecipe].recipe.url}'>Link to Recipe</a>
-        <button type="button" class="button primary save-recipe">Save Recipe</button>`;
+        <h4 class="cell text-center">${dishCategory}</h4>
+        <a class="cell text-center" href='${recipeList.hits[randomRecipe].recipe.url}'>Link to Recipe</a>
+        <br>
+        <button type="button" class="button primary cell save-recipe">Save Recipe</button>`;
 
     cardContainer.appendChild(cardHeader);
     cardContainer.appendChild(cardImage);
@@ -82,10 +89,17 @@ function buildRecipeCard(){
 
 // Async function to build the recipes section
 async function buildRecipeSection(){
+    clearRecipeContainer();
+    let selectedDiet = document.querySelector("input[name='diet']:checked");
     await callRecipes(selectedIngredients.value, selectedDiet.value);
     for (let i = 0; i < 6; i++){
         buildRecipeCard();
     }
+}
+
+// Function to clear out the recipe container element
+function clearRecipeContainer(){
+    recipesContainer.innerHTML = ""
 }
 
 // Function to save the clicked recipe as a key-value pair of recipe name and link
@@ -101,10 +115,19 @@ function saveRecipeLink(){
 
 // Function to load a saved recipe
 function loadRecipesList(){
+    clearRecipeContainer();
     let savedRecipesContainer = document.createElement("div");
-    let savedRecipesHeader = document.createElement("h1");
-    savedRecipesHeader.textContent = "Saved Recipes";
+    savedRecipesContainer.className = "card cell small-4";
+    savedRecipesContainer.setAttribute("style", "grid-column:2");
+
+    let savedRecipesHeader = document.createElement("div");
+    savedRecipesHeader.className = "card-divider";
     savedRecipesContainer.appendChild(savedRecipesHeader);
+
+    let savedRecipesHeaderText = document.createElement("p");
+    savedRecipesHeaderText.textContent = "Saved Recipes";
+    savedRecipesHeaderText.className = "card-title";
+    savedRecipesHeader.appendChild(savedRecipesHeaderText);
 
     let savedRecipesList = document.createElement("ul");
 
@@ -115,7 +138,8 @@ function loadRecipesList(){
         console.log(savedRecipeLink);
 
         let savedRecipeListItem = document.createElement("li");
-        let savedRecipeInfo = `${savedRecipeName}: <a href=${savedRecipeLink}>Link to Recipe</a>`
+        savedRecipeListItem.className = "saved-recipe-li";
+        let savedRecipeInfo = `${savedRecipeName}: <a href=${savedRecipeLink}>Link to Recipe</a>`;
         savedRecipeListItem.innerHTML = savedRecipeInfo;
         
         savedRecipesList.appendChild(savedRecipeListItem);
@@ -124,10 +148,6 @@ function loadRecipesList(){
     savedRecipesContainer.appendChild(savedRecipesList);
     recipesContainer.appendChild(savedRecipesContainer);
 }
-
-// Function to build out the saved recipes section
-    // Pull data from localStorage, and use that for constructing the recipe cards
-    // Then rebuild the recipe section
 
 // Function to generate and build out a list of places to drop off food scraps
 function printFoodScrapLocations(resultObj) {
@@ -201,5 +221,6 @@ ntaNameEl.addEventListener('change', function(event){
 })
 
 // Event listener for retrieving saved recipes
+savedRecipesButton.addEventListener("click",loadRecipesList);
 // Event Listener for the submit form button
 submitButton.addEventListener("click", buildRecipeSection);
