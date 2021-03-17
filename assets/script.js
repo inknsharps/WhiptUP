@@ -1,6 +1,7 @@
 // Query selectors for the HTML Elements
-let recipesContainer = document.querySelector(".grid-x");
-let submitButton = document.querySelector(".primary");
+// let recipesContainer = document.querySelector(".recipes-container");
+let submitButton = document.querySelector("#submit-button");
+let selectedDiet = document.querySelector("#diet");
 let selectedIngredients = document.querySelector("input");
 
 // Declare variable for recipe information
@@ -9,11 +10,14 @@ let recipeList = {};
 // Make APIs Calls functionality
 // Async function that calls the Edamam API with ingredients, these can be separated by commas
 // Consider adding healthLabels as a parameter to the function.
-async function callRecipes(ingredients){
+async function callRecipes(ingredients, diet){
     // EdamamID and Key 
     const edamamID = "160f3329";
     const edamamKey = "ac5580afc95ecea7517a637138b4d2e1";
-    let recipeAPI = `https://api.edamam.com/search?q=${ingredients}&app_id=${edamamID}&app_key=${edamamKey}`
+    let recipeAPI = `https://api.edamam.com/search?q=${ingredients}&to=50&app_id=${edamamID}&app_key=${edamamKey}`
+    if (diet) {
+        recipeAPI += `&health=${diet}`
+    }
     let fetchedRecipes = await fetch(recipeAPI);
     recipeList = await fetchedRecipes.json();
     console.dir(recipeList);
@@ -57,25 +61,63 @@ function buildRecipeCard(){
     cardSection.innerHTML = `
         <p>${recipeList.hits[randomRecipe].recipe.dishType}</p>
         <a href='${recipeList.hits[randomRecipe].recipe.url}'>Link to Recipe</a>
-        <button type="button" class="button primary">Save Recipe</button>`;
+        <button type="button" class="button primary save-recipe">Save Recipe</button>`;
 
     cardContainer.appendChild(cardHeader);
     cardContainer.appendChild(cardImage);
     cardContainer.appendChild(cardSection);
 
     recipesContainer.appendChild(cardContainer);
+    let saveRecipeButton = document.querySelectorAll(".save-recipe");
+    for (let i = 0; i < saveRecipeButton.length; i++){
+        saveRecipeButton[i].addEventListener("click", saveRecipeLink);
+    }
 }
 
 // Async function to build the recipes section
 async function buildRecipeSection(){
-    await callRecipes(selectedIngredients.value);
+    await callRecipes(selectedIngredients.value, selectedDiet.value);
     for (let i = 0; i < 6; i++){
         buildRecipeCard();
     }
 }
 
-// Localstorage functionality to store recipes
-    // Save the currently selected recipe to localStorage in some format (HTML Element, or the current content of it)
+// Function to save the clicked recipe as a key-value pair of recipe name and link
+function saveRecipeLink(){
+    // Set the card itself to a variable
+    let recipeName = this.parentElement.previousSibling.previousSibling.innerText;
+    console.log(recipeName);
+    let recipeLink = this.parentElement.firstElementChild.nextElementSibling.href;
+    console.log(recipeLink);
+
+    localStorage.setItem(recipeName, recipeLink);
+}
+
+// Function to load a saved recipe
+function loadRecipesList(){
+    let savedRecipesContainer = document.createElement("div");
+    let savedRecipesHeader = document.createElement("h1");
+    savedRecipesHeader.textContent = "Saved Recipes";
+    savedRecipesContainer.appendChild(savedRecipesHeader);
+
+    let savedRecipesList = document.createElement("ul");
+
+    for (let i = 0; i < localStorage.length; i++){
+        let savedRecipeName = localStorage.key(i);
+        let savedRecipeLink = localStorage.getItem(localStorage.key(i));
+        console.log(savedRecipeName);
+        console.log(savedRecipeLink);
+
+        let savedRecipeListItem = document.createElement("li");
+        let savedRecipeInfo = `${savedRecipeName}: <a href=${savedRecipeLink}>Link to Recipe</a>`
+        savedRecipeListItem.innerHTML = savedRecipeInfo;
+        
+        savedRecipesList.appendChild(savedRecipeListItem);
+    }
+    
+    savedRecipesContainer.appendChild(savedRecipesList);
+    recipesContainer.appendChild(savedRecipesContainer);
+}
 
 // Function to build out the saved recipes section
     // Pull data from localStorage, and use that for constructing the recipe cards
