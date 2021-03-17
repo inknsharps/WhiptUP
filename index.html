@@ -44,7 +44,7 @@
         <div class="input-group">
             <input class="input-group-field" type="text" placeholder="Chicken, eggs, parmesan, pickles, etc...">
         <div class="input-group-button">
-            <input type="button" id="btnAdd" value="Add" onclick="addItem()">
+           
             
         
         </div>
@@ -57,7 +57,8 @@
           </fieldset>
 
           
-                <a class="button expanded" href="#">Dinner Awaits</a>  
+                <a class="button expanded" href="#">Dinner Awaits</a>
+     
           
         </div>
         
@@ -67,42 +68,80 @@
     
                  
     <!-- Recipes container -->
-    <section class="grid-x grid-margin-x">
-        <div class="card cell small-4" style="width: 300px;">
+    <section class="recipe-cards" id="recipe-card">
+            <div class="card cell small-4" style="width: 300px;">
             <div class="card-divider">
-                Recipe 1
+                <p class="card-title">Recipe 1</p>
             </div>
             <img src="https://picsum.photos/id/1080/300/200">
             <div class="card-section">
                 <h4>This is a card.</h4>
-                <p>It has an easy to override visual style, and is appropriately subdued.</p>
+                <a href="#" class="save-button">Save Recipe</a>
             </div>
         </div>
         <div class="card cell small-4" style="width: 300px;">
             <div class="card-divider">
-             Recipe 2
+             <p class="card-title">Recipe 2</p>
             </div>
             <img src="https://picsum.photos/id/1080/300/200">
             <div class="card-section">
                 <h4>This is a card.</h4>
-                <p>It has an easy to override visual style, and is appropriately subdued.</p>
+                <a href="#" class="save-button">Save Recipe</a>
             </div>
         </div>
         <div class="card cell small-4" style="width: 300px;">
             <div class="card-divider">
-                Recipe 3
+               <p class="card-title"> Recipe 3 </p>
             </div>
             <img src="https://picsum.photos/id/1080/300/200">
             <div class="card-section">
                 <h4>This is a card.</h4>
-                <p>It has an easy to override visual style, and is appropriately subdued.</p>
+                <a href="#" class="save-button">Save Recipe</a>
+            </div>
+        </div>
+        
+        <div class="card cell small-4" style="width: 300px;">
+            <div class="card-divider">
+               <p class="card-title"> Recipe 3 </p>
+            </div>
+            <img src="https://picsum.photos/id/1080/300/200">
+            <div class="card-section">
+                <h4>This is a card.</h4>
+                <a href="#" class="save-button">Save Recipe</a>
+            </div>
+        </div>
+        <div class="card cell small-4" style="width: 300px;">
+            <div class="card-divider">
+               <p class="card-title"> Recipe 3 </p>
+            </div>
+            <img src="https://picsum.photos/id/1080/300/200">
+            <div class="card-section">
+                <h4>This is a card.</h4>
+                <a href="#" class="save-button">Save Recipe</a>
+            </div>
+        </div>
+        <div class="card cell small-4" style="width: 300px;">
+            <div class="card-divider">
+               <p class="card-title"> Recipe 3 </p>
+            </div>
+            <img src="https://picsum.photos/id/1080/300/200">
+            <div class="card-section">
+                <h4>This is a card.</h4>
+                <a href="#" class="save-button">Save Recipe</a>
             </div>
         </div>
     </section>
+
+    <footer id="footer">
+        <h5>Got scraps? Find out where you can drop-off your food scraps to do your part in limiting waste in the city. ♻️</h4>
+            <a href="#" id="scrap-button">Find a Location!</a>
+    </footer>
 
     <!-- Footer sections for food donation and food scrap dropoff -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/js/foundation.min.js" integrity="sha256-pRF3zifJRA9jXGv++b06qwtSqX1byFQOLjqa2PTEb2o=" crossorigin="anonymous"></script>
     <script src="assets/script.js"></script>
+
+    
 </body>
 </html>
