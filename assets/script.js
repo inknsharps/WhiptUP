@@ -68,8 +68,10 @@ function buildRecipeCard(){
     cardContainer.appendChild(cardSection);
 
     recipesContainer.appendChild(cardContainer);
-    let saveRecipeButton = document.querySelector(".save-recipe");
-    saveRecipeButton.addEventListener("click", saveRecipeCard);
+    let saveRecipeButton = document.querySelectorAll(".save-recipe");
+    for (let i = 0; i < saveRecipeButton.length; i++){
+        saveRecipeButton[i].addEventListener("click", saveRecipeLink);
+    }
 }
 
 // Async function to build the recipes section
@@ -80,20 +82,43 @@ async function buildRecipeSection(){
     }
 }
 
-// Function to save the currently selected recipe to localStorage as an stringified HTML
-function saveRecipeCard(){
+// Function to save the clicked recipe as a key-value pair of recipe name and link
+function saveRecipeLink(){
     // Set the card itself to a variable
-    let recipeCard = this.parentElement.parentElement;
-    console.log(recipeCard.outerHTML);
-    localStorage.setItem("savedRecipe", JSON.stringify(recipeCard.outerHTML));
+    let recipeName = this.parentElement.previousSibling.previousSibling.innerText;
+    console.log(recipeName);
+    let recipeLink = this.parentElement.firstElementChild.nextElementSibling.href;
+    console.log(recipeLink);
+
+    localStorage.setItem(recipeName, recipeLink);
 }
 
 // Function to load a saved recipe
-async function loadRecipeCard(){
-    let savedRecipe = await JSON.parse(localStorage.getItem("savedRecipe"));
-    console.log(savedRecipe);
-    recipesContainer.innerHTML = savedRecipe;
+function loadRecipesList(){
+    let savedRecipesContainer = document.createElement("div");
+    let savedRecipesHeader = document.createElement("h1");
+    savedRecipesHeader.textContent = "Saved Recipes";
+    savedRecipesContainer.appendChild(savedRecipesHeader);
+
+    let savedRecipesList = document.createElement("ul");
+
+    for (let i = 0; i < localStorage.length; i++){
+        let savedRecipeName = localStorage.key(i);
+        let savedRecipeLink = localStorage.getItem(localStorage.key(i));
+        console.log(savedRecipeName);
+        console.log(savedRecipeLink);
+
+        let savedRecipeListItem = document.createElement("li");
+        let savedRecipeInfo = `${savedRecipeName}: <a href=${savedRecipeLink}>Link to Recipe</a>`
+        savedRecipeListItem.innerHTML = savedRecipeInfo;
+        
+        savedRecipesList.appendChild(savedRecipeListItem);
+    }
+    
+    savedRecipesContainer.appendChild(savedRecipesList);
+    recipesContainer.appendChild(savedRecipesContainer);
 }
+
 
 // Function to build out the saved recipes section
     // Pull data from localStorage, and use that for constructing the recipe cards
