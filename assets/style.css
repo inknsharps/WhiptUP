@@ -29,14 +29,17 @@ body, html {
     color: var(--main-color);
 }
 
+
 a:hover {
-    color: var(--main-color);
+    color: rgb(9, 111, 120);
+    transform: scale(1.1);
+    
 }
 
 
 .top-bar, .top-bar ul {
     color: var(--main-color);
-    height: 50px;
+    height: auto;
     background-color: white;
 }
 
@@ -63,7 +66,7 @@ a:hover {
 /* The hero image */
 .hero-image {
   
-  background-image: url("../img/hero.jpg");
+  background-image: url("../img/hero-2.jpg");
 
   /* Set a specific height */
   height: 50%;
@@ -77,17 +80,28 @@ a:hover {
 }
 a {
     
-    font-size: 24px;
+    font-size: 18px;
     font-family:'Josefin Slab', serif;
     color: var(--main-color);
     font-weight: bold;
+    margin-top: 10px;
+}
+
+a:hover {
+
+}
+
+.input-group {
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    border: 1px solid lightgray;
+
 }
 
 .form {
-    height: 400px;
+    height: 300px;
     width: 660px;
-    padding: 50px;
-    margin: auto;
+    margin: 15px auto;
     position: relative;
     color: var(--main-color);
     
@@ -105,6 +119,9 @@ label, legend {
     font-weight: 400;
     color: var(--font-color);
     background-color: var(--main-color);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    border: 1px solid lightgray;
 }
 
 .button.expanded:hover {
@@ -127,13 +144,30 @@ label, legend {
 
 
 .recipe-cards {
-    
     display: grid;
-    grid-template-columns: auto auto auto;
-    justify-content: space-around;
+    grid-gap: 1rem;
+    grid-template-columns: 1fr;
+    grid-template-rows: 50vh;
+    align-items: center;
+    justify-items: center;
+    
     
 }
 
+.card {
+    box-shadow: 2px 4px 10px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    border: 1px solid lightgray;
+    
+    
+}
+
+.card:hover,
+.card:focus {
+  box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+  transform: translateY(-0.50em);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
 
 .card-divider {
     background-color:var(--main-color);
@@ -182,18 +216,23 @@ label, legend {
     position:relative;
     top:50%; 
     left:50%;
-    border: solid 1px black;
     font-size: 20px;
     padding: 5px;
     color:var(--font-color);
     font-weight:lighter;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    border: 1px solid lightgray;
+    
 }
 
+
 #scrap-button:hover {
-    border: none;
-    background-color: rgb(17, 190, 19);
-    opacity: .8;
+    background-image: linear-gradient(to right, #13b91c, #b7fc21, #13b91c, #b7fc21);
+    box-shadow: 0 4px 15px 0 rgba(83, 176, 57, 0.75);
+    
 }
+
 
 .saved-recipe-li{
     margin: 1vh;
@@ -206,3 +245,35 @@ label, legend {
     padding: 1vh;
     background-color: lightgrey;
 }
+
+/* Small only */
+@media (min-width: 600px) {
+.recipe-cards { 
+    grid-template-columns: repeat(2, 1fr);
+
+}
+
+  
+  /* Screen larger than 900px? 3 columns */
+@media (min-width: 900px) {
+    .recipe-cards { 
+        grid-template-columns: repeat(3, 1fr);
+        
+    }
+  }
+
+@media only screen and (max-width: 1025px) {
+    .menu .menu-text {
+      display: inline-block;
+    }
+
+    .top-bar-left a {
+      display: none;
+    }
+
+    .top-bar-toggle:checked ~ .top-bar-left a {
+      display: grid;
+      grid-row: 2;
+    }
+  }
+
