@@ -141,14 +141,30 @@ function loadRecipesList(){
 
         let savedRecipeListItem = document.createElement("li");
         savedRecipeListItem.className = "saved-recipe-li";
-        let savedRecipeInfo = `${savedRecipeName}: <a href=${savedRecipeLink}>Link to Recipe</a>`;
+        let savedRecipeInfo = `<span>${savedRecipeName}</span>: <a href=${savedRecipeLink}>Link to Recipe</a>`;
         savedRecipeListItem.innerHTML = savedRecipeInfo;
         
+        let closeButton = document.createElement("button");
+        closeButton.className = "close button";
+        closeButton.setAttribute("type", "button");
+        closeButton.setAttribute("style", "padding: 0.5vh; margin: 1vh");
+        closeButton.innerHTML = "<span aria-hidden='true'>&times;</span>";
+        savedRecipeListItem.appendChild(closeButton);
+        closeButton.addEventListener("click", deleteRecipeLi);
+
         savedRecipesList.appendChild(savedRecipeListItem);
     }
-    
     savedRecipesContainer.appendChild(savedRecipesList);
     recipesContainer.appendChild(savedRecipesContainer);
+}
+
+// Function to remove saved recipe list elements from both the DOM and localStorage
+function deleteRecipeLi(){
+    let recipeKey = this.parentElement.firstElementChild.textContent;
+    console.log(recipeKey)
+    delete localStorage[recipeKey];
+    let recipeLi = this.parentElement;
+    recipeLi.remove();
 }
 
 // Function to generate and build out a list of places to drop off food scraps
