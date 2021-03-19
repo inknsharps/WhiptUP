@@ -89,6 +89,7 @@ function buildRecipeCard(){
 
 // Async function to build the recipes section
 async function buildRecipeSection(){
+    recipesContainer.setAttribute("style", "display:grid");
     clearRecipeContainer();
     let selectedDiet = document.querySelector("input[name='diet']:checked");
     await callRecipes(selectedIngredients.value, selectedDiet.value);
@@ -115,6 +116,7 @@ function saveRecipeLink(){
 
 // Function to load a saved recipe
 function loadRecipesList(){
+    recipesContainer.setAttribute("style", "display:grid");
     clearRecipeContainer();
     let savedRecipesContainer = document.createElement("div");
     savedRecipesContainer.className = "card cell small-4";
