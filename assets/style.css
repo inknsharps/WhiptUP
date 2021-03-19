@@ -1,280 +1,307 @@
-  :root {
-  --main-color: rgb(30, 177, 190);
-  --font-color: black;
-  }
-
-* {
-    box-sizing: border-box;
+:root {
+    --main-color: rgb(30, 177, 190);
+    --font-color: black;
+    }
+  
+  * {
+      box-sizing: border-box;
+      
+    }
     
+  body {
+      margin: 0;
+      color: var(--main-color);
+     
   }
   
-body {
-    margin: 0;
-    color: var(--main-color);
-   
-}
-
-
-body, html {
-    height: 100%;
-    font-family:'Josefin Slab', serif;
-    color: var(--main-color);
-}
-
-
-.menu-text a {
-    display: flex;
-    justify-content: space-around;
-    align-content: space-around;
-    color: var(--main-color);
-}
-
-
-a:hover {
-    color: rgb(9, 111, 120);
-    transform: scale(1.1);
-    
-}
-
-
-.top-bar, .top-bar ul {
-    color: var(--main-color);
-    height: auto;
-    background-color: white;
-}
-
-.menu .menu-text {
-    font-size: 30px;
-    color: var(--main-color);
-    font-family:'Josefin Slab', serif;
-    opacity: .8;
-    font-weight: bold;
-    
-}
-
-
-.centerLogo img {
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    background: white;
-    color: var(--main-color);
-    border-radius: 50px;
-    opacity: .9;
-  }
-
-/* The hero image */
-.hero-image {
   
-  background-image: url("../img/hero-2.jpg");
-
-  /* Set a specific height */
-  height: 50%;
-
-  /* Position and center the image to scale nicely on all screens */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative;
-
-}
-a {
+  body, html {
+      height: 100%;
+      font-family:'Josefin Slab', serif;
+      color: var(--main-color);
+  }
+  
+  
+  .menu-text a {
+      display: flex;
+      justify-content: space-around;
+      align-content: space-around;
+      color: var(--main-color);
+  }
+  
+  
+  a:hover {
+      color: rgb(9, 111, 120);
+      transform: scale(1.1);
+      
+  }
+  
+  
+  .top-bar, .top-bar ul {
+      color: var(--main-color);
+      height: auto;
+      background-color: white;
+  }
+  
+  .menu .menu-text {
+      font-size: 30px;
+      color: var(--main-color);
+      font-family:'Josefin Slab', serif;
+      opacity: .8;
+      font-weight: bold;
+      
+  }
+  
+  
+  .centerLogo img {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      color: var(--main-color);
+      border-radius: 50px;
+      opacity: .9;
+    }
+  
+  /* The hero image */
+  .hero-image {
     
-    font-size: 18px;
-    font-family:'Josefin Slab', serif;
-    color: var(--main-color);
-    font-weight: bold;
-    margin-top: 10px;
-}
-
-a:hover {
-
-}
-
-.input-group {
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    border-radius: 10px;
-    border: 1px solid lightgray;
-
-}
-
-.form {
-    height: 300px;
-    width: 660px;
-    margin: 15px auto;
+    background-image: url("../img/hero-2.jpg");
+  
+    /* Set a specific height */
+    height: 50%;
+  
+    /* Position and center the image to scale nicely on all screens */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     position: relative;
-    color: var(--main-color);
-    
-    
-}
-
-label, legend {
-    font-size:18px;
-    color: var(--main-color);
-}
-
-.button.expanded {
-    padding: 10px;
-    font-size: 24px;
-    font-weight: 400;
-    color: var(--font-color);
-    background-color: var(--main-color);
+  
+  }
+  a {
+      
+      font-size: 18px;
+      font-family:'Josefin Slab', serif;
+      color: var(--main-color);
+      font-weight: bold;
+      margin-top: 10px;
+  }
+  
+  a:hover {
+  
+  }
+  
+  .input-group {
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      border-radius: 10px;
+      border: 1px solid lightgray;
+  
+  }
+  
+  .form {
+      height: 300px;
+      width: 660px;
+      margin: 15px auto;
+      position: relative;
+      color: var(--main-color);
+      
+      
+  }
+  
+  label, legend {
+      font-size:18px;
+      color: var(--main-color);
+  }
+  
+  .button.expanded {
+      padding: 10px;
+      font-size: 24px;
+      font-weight: 400;
+      color: var(--font-color);
+      background-color: var(--main-color);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      border-radius: 10px;
+      border: 1px solid lightgray;
+  }
+  
+  .button.expanded:hover {
+      
+      background-color: white;
+      color: var(--main-color);
+  }
+  #btnAdd {
+     
+      border: none;
+      color: var(--font-color);
+      background-color: var(--main-color);
+      
+  }
+  
+  #btnAdd:hover {
+      color: var(--main-color);
+      background-color: white;
+  }
+  
+  
+  .recipe-cards {
+      display: grid;
+      grid-gap: 1rem;
+      grid-template-columns: 1fr;
+      grid-template-rows: 50vh;
+      align-items: center;
+      justify-items: center;
+      
+      
+  }
+  
+  .card {
+      box-shadow: 2px 4px 10px rgba(0,0,0,0.1);
+      border-radius: 10px;
+      border: 1px solid lightgray;
+      
+      
+      
+  }
+  
+  .card:hover,
+  .card:focus {
+    box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+    transform: translateY(-0.50em);
     box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    border-radius: 10px;
-    border: 1px solid lightgray;
-}
+  }
+  
+  .card-divider {
+      background-color:var(--main-color);
+      opacity: .85;
+      
+  }
+  
+  .card-title {
+      opacity: 1;
+      font-size: 24px;
+      padding-left: 35%;
+      
+  }
+  
+  .card-section h4 {
+      font-family: 'Josefin Slab', serif;
+  }
+  
+  
+  #footer {
+      position: relative;
+      background-color:var(--main-color);
+      height: 3px;
+      width: 100%;
+      margin-top: 60px;
+      
+      
+   }
+  
+   h5 {
+       padding-top: 10px;
+       font-size: 24px;
+       color:var(--font-color);
+       font-family: 'Josefin Slab', serif;
+       text-align: center;
+   }
+  
+   .save-button {
+       font-size: 18px;
+   }
+  
+  #scrap-button {
+      height:20px; 
+      width:100px; 
+      margin: -20px -50px; 
+      position:relative;
+      top:50%; 
+      left:50%;
+      font-size: 20px;
+      padding: 5px;
+      color:var(--font-color);
+      font-weight:lighter;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      border-radius: 10px;
+      border: 1px solid lightgray;
+      
+  }
+  
+  
+  #scrap-button:hover {
+      background-image: linear-gradient(to right, #13b91c, #b7fc21, #13b91c, #b7fc21);
+      box-shadow: 0 4px 15px 0 rgba(83, 176, 57, 0.75);
+      
+  }
+  
+  
+  .saved-recipe-li{
+      margin: 1vh;
+      padding: 1vh;
+      background-color: lightblue;
+  }
+  
+  .saved-recipe-li:nth-child(odd) {
+      margin: 1vh;
+      padding: 1vh;
+      background-color: lightgrey;
+  }
+  
+  /* Small only */ 
+  @media (max-width:600px) {
+    .recipe-cards {
+        grid-template-rows: repeat(1, 1fr);
+        grid-template-columns: 50vh;
+        display:grid;
+        justify-content: center;
+          
+      }
 
-.button.expanded:hover {
-    
-    background-color: white;
-    color: var(--main-color);
-}
-#btnAdd {
-   
-    border: none;
-    color: var(--font-color);
-    background-color: var(--main-color);
-    
-}
+    .card {
+        display: grid;
+        justify-content: center;
+    }
 
-#btnAdd:hover {
-    color: var(--main-color);
-    background-color: white;
-}
+    .form {
+        width: auto;
+        padding: 10%;
+    }
+  }
 
-
-.recipe-cards {
-    display: grid;
-    grid-gap: 1rem;
-    grid-template-columns: 1fr;
-    grid-template-rows: 50vh;
+  @media (min-width:600px) {
+  .recipe-cards { 
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 60vh;
     align-items: center;
     justify-items: center;
-    
-    
-}
-
-.card {
-    box-shadow: 2px 4px 10px rgba(0,0,0,0.1);
-    border-radius: 10px;
-    border: 1px solid lightgray;
-    
-    
-    
-}
-
-.card:hover,
-.card:focus {
-  box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
-  transform: translateY(-0.50em);
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-}
-
-.card-divider {
-    background-color:var(--main-color);
-    opacity: .85;
-    
-}
-
-.card-title {
-    opacity: 1;
-    font-size: 24px;
-    padding-left: 35%;
-    
-}
-
-.card-section h4 {
-    font-family: 'Josefin Slab', serif;
-}
-
-
-#footer {
-    position: relative;
-    background-color:var(--main-color);
-    height: 3px;
-    width: 100%;
-    margin-top: 60px;
-    
-    
- }
-
- h5 {
-     padding-top: 10px;
-     font-size: 24px;
-     color:var(--font-color);
-     font-family: 'Josefin Slab', serif;
-     text-align: center;
- }
-
- .save-button {
-     font-size: 18px;
- }
-
-#scrap-button {
-    height:20px; 
-    width:100px; 
-    margin: -20px -50px; 
-    position:relative;
-    top:50%; 
-    left:50%;
-    font-size: 20px;
-    padding: 5px;
-    color:var(--font-color);
-    font-weight:lighter;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    border-radius: 10px;
-    border: 1px solid lightgray;
-    
-}
-
-
-#scrap-button:hover {
-    background-image: linear-gradient(to right, #13b91c, #b7fc21, #13b91c, #b7fc21);
-    box-shadow: 0 4px 15px 0 rgba(83, 176, 57, 0.75);
-    
-}
-
-
-.saved-recipe-li{
-    margin: 1vh;
-    padding: 1vh;
-    background-color: lightblue;
-}
-
-.saved-recipe-li:nth-child(odd) {
-    margin: 1vh;
-    padding: 1vh;
-    background-color: lightgrey;
-}
-
-/* Small only */
-@media (min-width: 600px) {
-.recipe-cards { 
-    grid-template-columns: repeat(2, 1fr);
-
-}
+          
+  
+  }
 
   
-  /* Screen larger than 900px? 3 columns */
-@media (min-width: 900px) {
-    .recipe-cards { 
+    
+    /* Screen larger than 900px? 3 columns */
+  @media (min-width: 900px) {
+      .recipe-cards {
         grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: 50vh;
         
-    }
-  }
+      }
 
-@media only screen and (max-width: 1025px) {
-    .menu .menu-text {
-      display: inline-block;
     }
 
-    .top-bar-left a {
-      display: none;
+  
+  @media only screen and (max-width: 1025px) {
+      .menu .menu-text {
+        display: inline-block;
+      }
+  
+      .top-bar-left a {
+        display: none;
+      }
+  
+      .top-bar-toggle:checked ~ .top-bar-left a {
+        display: grid;
+        grid-row: 2;
+      }
     }
-
-    .top-bar-toggle:checked ~ .top-bar-left a {
-      display: grid;
-      grid-row: 2;
-    }
-  }
-
