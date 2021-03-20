@@ -1,13 +1,24 @@
 # WhiptUp
-WhiptUp is a receipe generator that allows a user to input ingredients that they have on hand, and select from dietary restrictions, then recipes are generated, that include all the items that the user has selected.
+WhiptUp is a recipe generator that allows a user to input ingredients that they have on hand, and select from dietary restrictions, then recipes are generated, that include all the items that the user has selected.
 WhiptUp is focused on reducing food waste so the application will provide addresses and information for food scrap drop off locations in NYC.
+
+A link to the deployed application is available [here](https://inknsharps.github.io/WhiptUP/).
 
 ## User Story
 As a environmentally conscious cook,
 I want to be able to access recipes that make use of the ingredients I have on hand
 So that I can reduce food waste, and also have resources on what to do with food scraps
 
-## Screenshots
+## Demos
+
+### Search recipes by Ingredient
+<img src="./img/recipe_search.gif">
+
+### Save recipes to a list
+<img src="./img/saved_recipes_list.jpg">
+
+### Search Compost Locations
+<img src="./img/compost_locations.gif">
 
 ## Tech/framework used
 - HTML
